@@ -1,0 +1,18 @@
+<h1>Cocktails</h1>
+<div class="container">
+  <div class="row">
+    <% @cocktails.each do |f| %>
+    <div class="col-xs-12 col-sm-3">
+      <%= render 'shared/card', cocktail: f %>
+      <div class="btn btn-primary"  style="display: flex">
+        <%= link_to "Delete", cocktail_path(f), method: :delete, data: { confirm: 'Are you sure?' }   %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= render 'form' %>
+</div>
+
+
+
+
