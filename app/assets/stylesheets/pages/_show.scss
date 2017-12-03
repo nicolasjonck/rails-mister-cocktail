@@ -1,0 +1,39 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 3 fr 1fr;
+  padding: 20px;
+}
+
+.recipe {
+  grid-row: 1 / span 3;
+  grid-column: 3 / span 2;
+  margin: 10px;
+  position: relative;
+}
+
+.delete-cocktail {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.cocktail-image {
+  grid-row: 1 / span 3;
+  grid-column: 1 / span 2;
+  margin: 10px;
+}
+
+.cocktail-form {
+  grid-row: 4 / span 1;
+  grid-column: 2 / span 2;
+}
+
+.line {
+  position: relative;
+}
+
+.buttons {
+  position: absolute;
+  right: 10px;
+}

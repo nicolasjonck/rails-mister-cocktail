@@ -1,19 +1,25 @@
-<h1><%= @cocktail.name %></h1>
-<h2>Recipe:</h2>
-<ul>
-<% @cocktail.doses.each do |dose| %>
-  <li>
-    <%= dose.description %> of <%= dose.ingredient.name %>
-    <%= link_to "Delete ingredient", dose_path(dose), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
-  </li>
-<% end %>
-</ul>
-<h3>Add an ingredient to the recipe</h3>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-<%= f.input :description, placeholder: "How much?" %>
-<%= f.input :ingredient_id, collection: @ingredients - @cocktail.ingredients %>
-<%= f.submit %>
-<% end %>
+<div class="grid">
+  <div class="recipe form-card">
+    <h3><%= @cocktail.name %></h3>
+    <h4>Recipe:</h4>
+    <ul>
+    <% @cocktail.doses.each do |dose| %>
+      <li>
+        <div class="line">
+          <%= dose.description %> of <%= dose.ingredient.name %>
+          <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: 'Are you sure?' }, class: 'buttons' %>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <%= link_to "Delete cocktail", cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary delete-cocktail" %>
+  </div>
+  <div class="cocktail-image text-center form-card">
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  </div>
+  <div class="cocktail-form form-card">
+    <%= render 'doses/form' %>
+  </div>
+</div>
 
 
-<%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %>

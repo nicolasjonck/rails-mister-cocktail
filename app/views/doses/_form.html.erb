@@ -1,0 +1,7 @@
+  <h3>Add an ingredient to the recipe</h3>
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description, placeholder: "How much?" %>
+  <%= f.input :ingredient_id, collection: @ingredients - @cocktail.ingredients %>
+  <%= f.submit %>
+  <% end %>
+
